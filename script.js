@@ -1,16 +1,25 @@
 function init() {
-  data = [{
-    x: [1, 2, 3, 4, 5],
-    y: [1, 2, 4, 8, 16] 
-  }];
-  Plotly.newPlot("plot", data);
-};
+  var selector = d3.select("#selDataset");
+
+  d3.json("samples.json").then((data) => {
+    console.log(data);
+    var sampleNames = data.names;
+    selector.append("option").text("Please Select an ID")
+    sampleNames.forEach((sample) => {
+      selector
+        .append("option")
+        .text(sample)
+        .property("value", sample);
+    });
+})}
+
+init();
 
 d3.selectAll("#dropdownMenu").on("change", updatePlotly);
 function updatePlotly() {
   var dropdownMenu = d3.select("#dropdownMenu");
   var dataset = dropdownMenu.property("value");
-
+  console.log(dataset)
   var xData = [1, 2, 3, 4, 5];
   var yData = [];
 
@@ -29,4 +38,20 @@ function updatePlotly() {
   Plotly.restyle("plot", trace);
 };
 
-init();
+function optionChanged(sample) {
+  buildMetadata(sample);
+  buildCharts(sample);
+}
+
+function buildMetadata(sample) {
+  d3.json("samples.json").then((data) => {
+    var metadata = data.metadata;
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = Object.entries(resultArray[0]);
+    var PANEL = d3.select("#sample-metadata");
+
+    PANEL.html("");
+    result.forEach(x => console.log(x))
+    result.forEach(([a,b]) => PANEL.append("h6").text(`${a} : ${b}`));
+  });
+}
