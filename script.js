@@ -2,9 +2,8 @@ function init() {
   var selector = d3.select("#selDataset");
 
   d3.json("samples.json").then((data) => {
-    console.log(data);
     var sampleNames = data.names;
-    selector.append("option").text("Please Select an ID")
+    selector.append("option").text("Select an ID")
     sampleNames.forEach((sample) => {
       selector
         .append("option")
@@ -19,7 +18,6 @@ d3.selectAll("#dropdownMenu").on("change", updatePlotly);
 function updatePlotly() {
   var dropdownMenu = d3.select("#dropdownMenu");
   var dataset = dropdownMenu.property("value");
-  console.log(dataset)
   var xData = [1, 2, 3, 4, 5];
   var yData = [];
 
@@ -55,3 +53,7 @@ function buildMetadata(sample) {
     result.forEach(([a,b]) => PANEL.append("h6").text(`${a} : ${b}`));
   });
 }
+
+function buildCharts (sample) {
+  Plotly.newPlot("bar", [{x:[1,2,3],y:[1,2,3]}])
+};
