@@ -49,11 +49,7 @@ function buildMetadata(sample) {
     var PANEL = d3.select("#sample-metadata");
 
     PANEL.html("");
-    result.forEach(x => console.log(x))
     result.forEach(([a,b]) => PANEL.append("h6").text(`${a} : ${b}`));
+    console.log(sample)
   });
 }
-
-function buildCharts (sample) {
-  Plotly.newPlot("bar", [{x:[1,2,3],y:[1,2,3]}])
-};
