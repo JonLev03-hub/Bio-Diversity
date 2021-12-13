@@ -44,7 +44,7 @@ function buildMetadata(sample) {
           title: { text: "Belly Button Wash Frequency" },
           type: "indicator",
           mode: "gauge+number+delta",
-          delta: { reference: 2 },
+          delta: { reference: 1 },
           gauge: {
             axis: { range: [null, 8] },
             bar: { color: "darkblue" },
