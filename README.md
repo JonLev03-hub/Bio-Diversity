@@ -10,3 +10,5 @@ The four charts displayed show the users demographic information, top ten bacter
 
 ## How To use 
 Though this website might not pose much interest to anyone who wasnt in the study, to look up specific individuals you will need their ID number and you can select that from the dropdown box in the center left, after that you will see their demographic information and belly button bio diversity get displayed along with the claimed amount they wash their belly button on the far right side. 
+
+[BellyButton Website](https://jonlev03-hub.github.io/Bio-Diversity/)
